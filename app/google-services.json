@@ -1,0 +1,49 @@
+{
+  "project_info": {
+    "project_number": "366585934300",
+    "firebase_url": "https://crudcosa-default-rtdb.firebaseio.com",
+    "project_id": "crudcosa",
+    "storage_bucket": "crudcosa.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:366585934300:android:47505b93e574d78208df19",
+        "android_client_info": {
+          "package_name": "com.example.crud_cosa"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBcK43zowq1lNAahyy20dxl7Hdd3N6_Jws"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:366585934300:android:be12eaefda61f6b408df19",
+        "android_client_info": {
+          "package_name": "com.example.firabasecrud"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBcK43zowq1lNAahyy20dxl7Hdd3N6_Jws"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
