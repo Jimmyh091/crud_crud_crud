@@ -18,41 +18,41 @@ import kotlinx.coroutines.tasks.await
 class Util {
     companion object {
 
-        fun existeClub(clubs: List<Club>, nombre: String): Boolean {
-            return clubs.any { it.nombre!!.lowercase() == nombre.lowercase() }
+        fun existeObra(obras: List<Obra>, nombre: String): Boolean {
+            return obras.any { it.nombre!!.lowercase() == nombre.lowercase() }
         }
 
 
-        fun obtenerListaCLubs(db_ref: DatabaseReference, contexto: Context): MutableList<Club> {
-            val lista_clubs = mutableListOf<Club>()
+        fun obtenerListaObras(db_ref: DatabaseReference, contexto: Context): MutableList<Obra> {
+            val listaObras = mutableListOf<Obra>()
 
             db_ref.child("nba").child("clubs")
                 .addValueEventListener(object : ValueEventListener {
                     override fun onDataChange(snapshot: DataSnapshot) {
-                        snapshot.children.forEach { club ->
-                            val club_actual = club.getValue(Club::class.java)
-                            lista_clubs.add(club_actual!!)
+                        snapshot.children.forEach { obra ->
+                            val obraActual = obra.getValue(Obra::class.java)
+                            listaObras.add(obraActual!!)
                         }
                     }
 
                     override fun onCancelled(error: DatabaseError) {
-                        Toast.makeText(contexto, "Error al obtener los clubs", Toast.LENGTH_SHORT)
+                        Toast.makeText(contexto, "Error al obtener las obras", Toast.LENGTH_SHORT)
                             .show()
                     }
 
                 })
-            return lista_clubs
+            return listaObras
         }
 
-        fun escribirClub(db_ref: DatabaseReference,id: String, club: Club) {
-            db_ref.child("nba").child("clubs").child(id).setValue(club)
+        fun escribirObra(db_ref: DatabaseReference,id: String, obra : Obra) {
+            db_ref.child("nba").child("clubs").child(id).setValue(obra)
         }
 
         //LO CAMBIAREMOS
-        suspend fun guardarEscudo(almacen: StorageReference, id: String, escudo: Uri): String {
+        suspend fun guardarImagen(almacen: StorageReference, id: String, imagen: Uri): String {
             var urlAlmacen: Uri
             urlAlmacen =
-                almacen.child("escudos").child(id).putFile(escudo).await()
+                almacen.child("escudos").child(id).putFile(imagen).await()
                     .storage.downloadUrl.await()
 
             return urlAlmacen.toString()
@@ -64,7 +64,7 @@ class Util {
             }
         }
 
-        fun animacion_carga(contexto: Context): CircularProgressDrawable {
+        fun animacionCarga(contexto: Context): CircularProgressDrawable {
             val animacion = CircularProgressDrawable(contexto)
             animacion.strokeWidth = 5f
             animacion.centerRadius = 30f
@@ -77,7 +77,7 @@ class Util {
 
         fun opcionesGlide(context: Context): RequestOptions {
             val options = RequestOptions()
-                .placeholder(animacion_carga(context))
+                .placeholder(animacionCarga(context))
                 .fallback(R.drawable.fotogaleria)
                 .error(R.drawable.error_404)
             return options

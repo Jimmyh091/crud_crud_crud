@@ -13,13 +13,13 @@
         android:theme="@style/Theme.FirabaseCRUD"
         tools:targetApi="31">
         <activity
-            android:name=".EditarClub"
+            android:name=".EditarObra"
             android:exported="false" />
         <activity
-            android:name=".VerClubs"
+            android:name=".VerObras"
             android:exported="false" />
         <activity
-            android:name=".CrearClub"
+            android:name=".CrearObra"
             android:exported="false" />
         <activity
             android:name=".MainActivity"

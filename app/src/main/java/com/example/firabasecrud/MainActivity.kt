@@ -8,13 +8,11 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 
-
-
-private lateinit var botonCrear: Button
-private lateinit var botonListar: Button
-
-
 class MainActivity : AppCompatActivity() {
+
+    private lateinit var botonCrear: Button
+    private lateinit var botonLista: Button
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -26,17 +24,17 @@ class MainActivity : AppCompatActivity() {
         }
 
 
-        botonCrear = findViewById(R.id.crear)
-        botonListar = findViewById(R.id.listar)
+        botonCrear = findViewById(R.id.crearObra)
+        botonLista = findViewById(R.id.listaObras)
 
 
         botonCrear.setOnClickListener {
-            val intent = Intent(this, CrearClub::class.java)
+            val intent = Intent(this, CrearObra::class.java)
             startActivity(intent)
         }
 
-        botonListar.setOnClickListener {
-            val intent = Intent(this, VerClubs::class.java)
+        botonLista.setOnClickListener {
+            val intent = Intent(this, VerObras::class.java)
             startActivity(intent)
         }
 

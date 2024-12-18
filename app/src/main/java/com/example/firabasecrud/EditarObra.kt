@@ -16,8 +16,6 @@ import androidx.core.view.WindowInsetsCompat
 import com.bumptech.glide.Glide
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
-import com.google.firebase.storage.FirebaseStorage
-import com.google.firebase.storage.StorageReference
 import io.appwrite.Client
 import io.appwrite.ID
 import io.appwrite.models.InputFile
@@ -87,8 +85,8 @@ class EditarObra : AppCompatActivity() {
 
         Glide.with(applicationContext)
             .load(obra.rutaImagen)
-            .apply(UtilCopia.opcionesGlide(applicationContext))
-            .transition(UtilCopia.transicion)
+            .apply(Util.opcionesGlide(applicationContext))
+            .transition(Util.transicion)
             .into(imagen)
 
 
@@ -97,7 +95,7 @@ class EditarObra : AppCompatActivity() {
             accesoGaleria.launch("image/*")
         }
 
-        listaObras = UtilCopia.obtenerListaObras(database, this)
+        listaObras = Util.obtenerListaObras(database, this)
         botonModificar.setOnClickListener {
             if (nombre.text.isEmpty() || descripcion.text.isEmpty() ) {
                 Toast.makeText(
@@ -105,7 +103,7 @@ class EditarObra : AppCompatActivity() {
                     "Rellene todos los campos o selecione una imagen",
                     Toast.LENGTH_SHORT
                 ).show()
-            } else if (UtilCopia.existeObra(
+            } else if (Util.existeObra(
                     listaObras,
                     nombre.text.toString()
                 ) && nombre.text.toString().lowercase() != obra.nombre!!.lowercase()
@@ -157,7 +155,7 @@ class EditarObra : AppCompatActivity() {
                             imagen,
                             identificadorFile
                         )
-                        UtilCopia.escribirObra(database, identificadorObra!!, club)
+                        Util.escribirObra(database, identificadorObra!!, club)
                     }else if (nombre.text.toString()!=obra.nombre || descripcion.text.toString()!=obra.descripcion
                         || fecha!=obra.fecha!!){
                         val club = Obra(
@@ -169,9 +167,9 @@ class EditarObra : AppCompatActivity() {
                             obra.rutaImagen,
                             obra.idImagen
                         )
-                        UtilCopia.escribirObra(database, identificadorObra!!, obra)
+                        Util.escribirObra(database, identificadorObra!!, obra)
 
-                        UtilCopia.tostadaCorrutina(activity,applicationContext,
+                        Util.tostadaCorrutina(activity,applicationContext,
                             "Obra actualizada con éxito")
                     }
                 }

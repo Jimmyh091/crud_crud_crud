@@ -1,8 +1,6 @@
 package com.example.firabasecrud
 
 import android.annotation.SuppressLint
-import android.graphics.Bitmap
-import android.graphics.BitmapFactory
 import android.net.Uri
 import android.os.Bundle
 import android.provider.OpenableColumns
@@ -18,8 +16,6 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
-import com.google.firebase.storage.FirebaseStorage
-import com.google.firebase.storage.StorageReference
 import io.appwrite.Client
 import io.appwrite.ID
 import io.appwrite.models.InputFile
@@ -29,14 +25,11 @@ import kotlinx.coroutines.GlobalScope
 
 
 import kotlinx.coroutines.launch
-import java.io.ByteArrayOutputStream
-import java.io.File
-import java.net.URLConnection
 
 
 class CrearObra : AppCompatActivity() {
 
-    
+
     private lateinit var imagen: ImageView
     private lateinit var nombre: EditText
     private lateinit var descripcion: EditText
@@ -93,7 +86,7 @@ class CrearObra : AppCompatActivity() {
         imagen.setOnClickListener {
             accesoGaleria.launch("image/*")
         }
-        var listaObras = UtilCopia.obtenerListaObras(database, this)
+        var listaObras = Util.obtenerListaObras(database, this)
         botonCrear.setOnClickListener {
 
             if (nombre.text.isEmpty() || descripcion.text.isEmpty() || rutaImagen == null) {
@@ -104,7 +97,7 @@ class CrearObra : AppCompatActivity() {
                 ).show()
             } else if (nombre.text.toString().toInt() > 2023 || nombre.text.toString().toInt() < 1500) { //t aqui va la fecha, no el nombre
                 Toast.makeText(this, "Año de fundación no válido", Toast.LENGTH_SHORT).show()
-            } else if (UtilCopia.existeObra(
+            } else if (Util.existeObra(
                     listaObras,
                     nombre.text.toString()
                 )
@@ -174,9 +167,9 @@ class CrearObra : AppCompatActivity() {
                         linkImagen,
                         identificadorFile
                     )
-                    UtilCopia.escribirObra(database, identificadorObra, obra)
+                    Util.escribirObra(database, identificadorObra, obra)
 
-                    UtilCopia.tostadaCorrutina(
+                    Util.tostadaCorrutina(
                         activity, applicationContext,
                         "Escudo descargado con éxito"
                     )

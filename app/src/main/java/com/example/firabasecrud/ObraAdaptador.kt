@@ -12,7 +12,6 @@ import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.google.firebase.database.FirebaseDatabase
-import com.google.firebase.storage.FirebaseStorage
 import io.appwrite.Client
 import io.appwrite.services.Storage
 import kotlinx.coroutines.Dispatchers
@@ -20,7 +19,7 @@ import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 
 class ObraAdaptador(private val listaObras: MutableList<Obra>) :
-    RecyclerView.Adapter<ObraAdaptador.ObraViewHolder>() {
+    RecyclerView.Adapter<`ObraAdaptador`.ObraViewHolder>() {
 
     private lateinit var contexto: Context
     private var lista_filtrada = listaObras
@@ -61,7 +60,7 @@ class ObraAdaptador(private val listaObras: MutableList<Obra>) :
             .into(holder.miniatura)
 
         holder.editar.setOnClickListener{
-            val intent= Intent(contexto,EditarClub::class.java)
+            val intent= Intent(contexto,EditarObra::class.java)
             intent.putExtra("obra",obraActual)
             contexto.startActivity(intent)
         }
