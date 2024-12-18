@@ -22,33 +22,31 @@
 
     <Button
         android:id="@+id/crearObra"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/titulo"
         android:layout_marginTop="100dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/listaObras"
         android:layout_marginEnd="20dp"
         android:layout_marginStart="20dp"
-        android:text="Crear Club"
+        android:text="Crear Obra"
         android:textColor="@color/white"
         android:backgroundTint="@color/azul"
         />
 
     <Button
         android:id="@+id/listaObras"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/crearObra"
-        android:layout_marginTop="50dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginEnd="20dp"
-        android:layout_marginStart="20dp"
-        android:text="Listar Clubs"
-        android:textColor="@color/white"
         android:backgroundTint="@color/azul"
-        />
+        android:text="Lista Obras"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="@+id/crearObra"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/crearObra"
+        app:layout_constraintTop_toTopOf="@+id/crearObra" />
 
     <TextView
         android:id="@+id/tituloapp"
