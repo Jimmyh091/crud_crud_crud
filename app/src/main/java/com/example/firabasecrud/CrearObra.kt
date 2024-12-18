@@ -14,6 +14,7 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.google.android.material.button.MaterialButton
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import io.appwrite.Client
@@ -37,8 +38,8 @@ class CrearObra : AppCompatActivity() {
     private lateinit var autor: EditText
     private lateinit var estrellas: RatingBar
     private lateinit var fecha: Instant
-    private lateinit var botonCrear: Button
-    private lateinit var botonVolver: Button
+    private lateinit var botonCrear: MaterialButton
+    private lateinit var botonVolver: MaterialButton
 
     //Firebase
     private lateinit var database: DatabaseReference

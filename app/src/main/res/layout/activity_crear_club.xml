@@ -32,7 +32,7 @@
         app:layout_constraintTop_toBottomOf="@id/imagen" />
 
     <EditText
-        android:id="@+id/Autor"
+        android:id="@+id/autor"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/nombre"
@@ -51,7 +51,7 @@
         android:layout_marginTop="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Autor" />
+        app:layout_constraintTop_toBottomOf="@id/autor" />
 
     <!-- no se porque no va el corner radius //? -->
     <com.google.android.material.button.MaterialButton
@@ -63,7 +63,8 @@
         android:backgroundTint="@color/amarillo"
         android:text="Crear Club"
         android:textColor="@color/white"
-        app:layout_constraintTop_toBottomOf="@+id/estrellas" />
+        app:layout_constraintTop_toBottomOf="@id/estrellas" />
+
     <com.google.android.material.button.MaterialButton
         android:id="@+id/botonVolver"
         android:layout_width="match_parent"

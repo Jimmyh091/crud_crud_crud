@@ -14,6 +14,7 @@ import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.ValueEventListener
 import com.google.firebase.storage.StorageReference
 import kotlinx.coroutines.tasks.await
+import java.text.SimpleDateFormat
 import java.time.Instant
 import java.time.format.DateTimeFormatter
 
@@ -21,6 +22,8 @@ class Util {
     companion object {
 
         fun parsearFecha(fecha: Instant): String {
+
+            SimpleDateFormat("yyyy-MM-dd").format(fecha.toEpochMilli())
 
             val fechaInstant = Instant.parse(fecha.toString())
             val fechaFormateada = fechaInstant.atZone(java.time.ZoneId.systemDefault())
