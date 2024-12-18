@@ -20,7 +20,7 @@
         android:background="@color/black"
         />
     <Button
-        android:id="@+id/crear"
+        android:id="@+id/crearObra"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/titulo"
@@ -34,10 +34,10 @@
         android:backgroundTint="@color/NBA_RED"
         />
     <Button
-        android:id="@+id/listar"
+        android:id="@+id/listaObras"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/crear"
+        app:layout_constraintTop_toBottomOf="@id/crearObra"
         android:layout_marginTop="50dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

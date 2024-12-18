@@ -9,7 +9,7 @@
 
 
     <ImageView
-        android:id="@+id/escudo"
+        android:id="@+id/imagen"
         android:layout_width="160dp"
         android:layout_height="170dp"
         android:layout_marginTop="40dp"
@@ -22,31 +22,39 @@
         android:id="@+id/nombre"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/escudo"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_margin="30dp"
+        android:layout_marginTop="28dp"
         android:hint="Nombre del club"
         android:textAlignment="center"
-        android:layout_margin="30dp"
-        />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/imagen" />
 
     <EditText
-        android:id="@+id/ciudad"
+        android:id="@+id/descripcion"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/nombre"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:hint="Ciudad del club"
+        android:hint="Descripcion"
         android:textAlignment="center"
         android:layout_margin="30dp"
         />
 
+    <!--aqui va el ratingbar-->
+    <RatingBar
+        android:id="@+id/estrellas"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fundacion" />
     <EditText
         android:id="@+id/fundacion"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/ciudad"
+        app:layout_constraintTop_toBottomOf="@id/descripcion"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:inputType="number"
@@ -56,20 +64,20 @@
         />
 
     <Button
-        android:id="@+id/boton_crear"
+        android:id="@+id/botonCrear"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/fundacion"
         android:layout_margin="30dp"
         android:backgroundTint="@color/NBA_BLUE"
         android:text="Crear Club"
         android:textColor="@color/white"
+        app:layout_constraintTop_toBottomOf="@+id/ratingBar"
         />
     <Button
-        android:id="@+id/boton_volver"
+        android:id="@+id/botonVolver"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/boton_crear"
+        app:layout_constraintTop_toBottomOf="@id/botonCrear"
         android:layout_margin="30dp"
         android:backgroundTint="@color/NBA_RED"
         android:text="Volver"

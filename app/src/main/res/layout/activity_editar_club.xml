@@ -8,7 +8,7 @@
     tools:context=".EditarClub">
 
     <ImageView
-        android:id="@+id/escudo"
+        android:id="@+id/imagen"
         android:layout_width="160dp"
         android:layout_height="170dp"
         android:layout_marginTop="40dp"
@@ -21,7 +21,7 @@
         android:id="@+id/nombre"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/escudo"
+        app:layout_constraintTop_toBottomOf="@id/imagen"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:hint="Nombre del club"
@@ -30,13 +30,13 @@
         />
 
     <EditText
-        android:id="@+id/ciudad"
+        android:id="@+id/descripcion"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/nombre"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:hint="Ciudad del club"
+        android:hint="Descripcion del club"
         android:textAlignment="center"
         android:layout_margin="30dp"
         />
@@ -45,34 +45,41 @@
         android:id="@+id/fundacion"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/ciudad"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:inputType="number"
-        android:hint="Año de fundación"
-        android:textAlignment="center"
         android:layout_margin="30dp"
-        />
+        android:hint="Año de fundación"
+        android:inputType="number"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/descripcion" />
 
     <Button
-        android:id="@+id/boton_modificar"
+        android:id="@+id/botonModificar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/fundacion"
         android:layout_margin="30dp"
         android:backgroundTint="@color/NBA_BLUE"
         android:text="Modificar Club"
         android:textColor="@color/white"
-        />
+        app:layout_constraintTop_toBottomOf="@+id/estrellas"
+        tools:layout_editor_absoluteX="30dp" />
     <Button
-        android:id="@+id/boton_volver"
+        android:id="@+id/botonVolver"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/boton_modificar"
+        app:layout_constraintTop_toBottomOf="@id/botonModificar"
         android:layout_margin="30dp"
         android:backgroundTint="@color/NBA_RED"
         android:text="Volver"
         android:textColor="@color/white"
         />
+
+    <RatingBar
+        android:id="@+id/estrellas"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fundacion" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

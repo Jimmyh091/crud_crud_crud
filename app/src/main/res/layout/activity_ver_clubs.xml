@@ -8,12 +8,12 @@
     tools:context=".VerClubs">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/lista_clubs"
+        android:id="@+id/listaObras"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:padding="5dp"
         android:scrollbars="vertical"
-        app:layout_constraintBottom_toTopOf="@id/volver_inicio"
+        app:layout_constraintBottom_toTopOf="@id/volverInicio"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -22,7 +22,7 @@
         tools:listitem="@layout/item_club" />
 
     <Button
-        android:id="@+id/volver_inicio"
+        android:id="@+id/volverInicio"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Volver al inicio"
