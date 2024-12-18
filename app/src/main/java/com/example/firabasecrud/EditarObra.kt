@@ -150,7 +150,7 @@ class EditarObra : AppCompatActivity() {
                             identificadorObra,
                             nombre.text.toString(),
                             autor.text.toString(),
-                            estrellas.rating.toInt(),
+                            estrellas.rating,
                             Instant.now().toString(),
                             imagen,
                             identificadorFile
@@ -161,7 +161,7 @@ class EditarObra : AppCompatActivity() {
                             identificadorObra,
                             nombre.text.toString(),
                             autor.text.toString(),
-                            estrellas.rating.toInt(),
+                            estrellas.rating,
                             Instant.now().toString(),
                             obra.rutaImagen,
                             obra.idImagen

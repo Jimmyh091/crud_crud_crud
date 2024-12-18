@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.RatingBar
 import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
@@ -29,6 +30,7 @@ class ObraAdaptador(private val listaObras: MutableList<Obra>) :
         val nombre: TextView = itemView.findViewById(R.id.item_nombre)
         val ciudad: TextView = itemView.findViewById(R.id.item_ciudad)
         val fundacion: TextView = itemView.findViewById(R.id.item_fundacion)
+        val ratingBar: RatingBar = itemView.findViewById(R.id.ratingBar)
         val editar: ImageView = itemView.findViewById(R.id.item_editar)
         val borrar: ImageView = itemView.findViewById(R.id.item_borrar)
     }
@@ -43,9 +45,10 @@ class ObraAdaptador(private val listaObras: MutableList<Obra>) :
 
     override fun onBindViewHolder(holder: ObraViewHolder, position: Int) {
         val obraActual = lista_filtrada[position]
-        holder.nombre.text = obraActual.nombre //t
+        holder.nombre.text = obraActual.nombre
         holder.ciudad.text = obraActual.autor
-        holder.fundacion.text = obraActual.fecha.toString() //t
+        holder.fundacion.text = obraActual.fecha.toString()
+        holder.ratingBar.rating = obraActual.estrellas!!
 
         val URL:String?=when(obraActual.rutaImagen){
             ""->null //Para que active imagen de fallback

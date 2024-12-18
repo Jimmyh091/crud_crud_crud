@@ -53,12 +53,12 @@
             android:id="@+id/item_fundacion"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="20dp"
-            android:text="Fundacion"
+            android:text="Fecha"
             android:textColor="@color/white"
             android:textSize="16sp"
-            app:layout_constraintEnd_toStartOf="@id/item_editar"
-            app:layout_constraintTop_toBottomOf="@id/item_nombre" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/item_nombre"
+            app:layout_constraintTop_toTopOf="@+id/item_nombre" />
 
         <ImageView
             android:id="@+id/item_borrar"
@@ -84,12 +84,14 @@
 
         <RatingBar
             android:id="@+id/ratingBar"
-            android:layout_width="150dp"
-            android:layout_height="30dp"
+            style="@style/smallratingbar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:scaleX="0.7"
+            android:scaleY="0.7"
             android:stepSize="0.5"
-            android:rating="2.5"
-
-            app:layout_constraintStart_toStartOf="@+id/item_nombre"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/item_ciudad"
             app:layout_constraintTop_toBottomOf="@+id/item_ciudad" />
 
 

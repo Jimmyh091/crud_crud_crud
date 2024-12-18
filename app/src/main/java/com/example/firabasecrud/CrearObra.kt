@@ -165,7 +165,7 @@ class CrearObra : AppCompatActivity() {
                         identificadorObra,
                         nombre.text.toString(),
                         autor.text.toString(),
-                        estrellas.rating.toInt(),
+                        estrellas.rating.toFloat(),
                         Util.obtenerFecha(),
                         linkImagen,
                         identificadorFile
