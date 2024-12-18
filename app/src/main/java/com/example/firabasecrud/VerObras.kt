@@ -2,12 +2,16 @@ package com.example.firabasecrud
 
 import android.os.Bundle
 import android.widget.Button
+import android.widget.EditText
+import android.widget.RatingBar
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.core.widget.doOnTextChanged
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.textfield.TextInputEditText
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
@@ -18,6 +22,8 @@ class VerObras : AppCompatActivity() {
 
     private lateinit var volver: Button
 
+    private lateinit var nombre : TextInputEditText
+    private lateinit var rating : RatingBar
     private lateinit var recycler: RecyclerView
     private lateinit var lista:MutableList<Obra>
     private lateinit var db_ref: DatabaseReference
@@ -34,6 +40,8 @@ class VerObras : AppCompatActivity() {
             insets
         }
 
+        nombre=findViewById(R.id.tietnombre)
+        rating=findViewById(R.id.rating)
 
         recycler=findViewById(R.id.listaObras)
         volver=findViewById(R.id.volverInicio)
@@ -58,9 +66,20 @@ class VerObras : AppCompatActivity() {
                 }
             })
 
-        var listaAux = lista.filter { true }
+        var listaAux = listOf<Obra>()
+        nombre.doOnTextChanged{
+            text, start, before, count ->
+            listaAux = lista.filter { filtrar(it) }
+            adaptador= ObraAdaptador(listaAux.toMutableList())
+            recycler.adapter=adaptador
+        }
+        rating.setOnClickListener {
+            listaAux = lista.sortedBy { it.estrellas }
+            adaptador= ObraAdaptador(listaAux.toMutableList())
+            recycler.adapter=adaptador
+        }
 
-        adaptador= ObraAdaptador(lista)
+        adaptador= ObraAdaptador(listaAux.toMutableList())
         recycler.adapter=adaptador
         recycler.setHasFixedSize(true)
         recycler.layoutManager= LinearLayoutManager(applicationContext)
@@ -70,4 +89,15 @@ class VerObras : AppCompatActivity() {
         }
 
     }
+
+    fun filtrar(obra : Obra) : Boolean{
+
+        return obra.nombre!!.contains(nombre.text.toString())
+
+    }
+
+    fun ordenar(lista : MutableList<Obra>) : MutableList<Obra>{
+
+    }
+
 }
