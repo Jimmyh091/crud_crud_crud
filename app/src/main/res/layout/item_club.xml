@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_marginVertical="4dp"
@@ -8,7 +9,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/disenio_item"
+        android:background="@color/amarillo"
         android:paddingBottom="4dp">
 
         <ImageView
@@ -30,7 +31,7 @@
             android:layout_marginStart="15dp"
             android:layout_marginTop="16dp"
             android:text="Nombre"
-            android:textColor="@color/NBA_RED"
+            android:textColor="@color/white"
             android:textSize="20sp"
             android:textStyle="bold"
             app:layout_constraintStart_toEndOf="@id/item_miniatura"
@@ -41,8 +42,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="15dp"
-            android:text="Ciudad"
-            android:textColor="@color/NBA_RED"
+            android:text="Autor"
+            android:textColor="@color/white"
             android:textSize="16sp"
             android:textStyle="bold"
             app:layout_constraintStart_toEndOf="@id/item_miniatura"
@@ -54,7 +55,7 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="20dp"
             android:text="Fundacion"
-            android:textColor="@color/NBA_BLUE"
+            android:textColor="@color/white"
             android:textSize="16sp"
             app:layout_constraintEnd_toStartOf="@id/item_editar"
             app:layout_constraintTop_toBottomOf="@id/item_nombre" />
@@ -80,6 +81,16 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <RatingBar
+            android:id="@+id/ratingBar"
+            android:layout_width="150dp"
+            android:layout_height="30dp"
+            android:stepSize="0.5"
+            android:rating="2.5"
+
+            app:layout_constraintStart_toStartOf="@+id/item_nombre"
+            app:layout_constraintTop_toBottomOf="@+id/item_ciudad" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
