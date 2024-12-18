@@ -45,7 +45,7 @@ class ObraAdaptador(private val listaObras: MutableList<Obra>) :
         val obraActual = lista_filtrada[position]
         holder.nombre.text = obraActual.nombre //t
         holder.ciudad.text = obraActual.descripcion
-        holder.fundacion.text = obraActual.fecha //t
+        holder.fundacion.text = obraActual.fecha.toString() //t
 
         val URL:String?=when(obraActual.rutaImagen){
             ""->null //Para que active imagen de fallback

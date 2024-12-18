@@ -14,9 +14,20 @@ import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.ValueEventListener
 import com.google.firebase.storage.StorageReference
 import kotlinx.coroutines.tasks.await
+import java.time.Instant
+import java.time.format.DateTimeFormatter
 
 class Util {
     companion object {
+
+        fun parsearFecha(fecha: Instant): String {
+
+            val fechaInstant = Instant.parse(fecha.toString())
+            val fechaFormateada = fechaInstant.atZone(java.time.ZoneId.systemDefault())
+            val fechaFormateadaString = fechaFormateada.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"))
+
+            return fechaFormateadaString
+        }
 
         fun existeObra(obras: List<Obra>, nombre: String): Boolean {
             return obras.any { it.nombre!!.lowercase() == nombre.lowercase() }

@@ -25,6 +25,8 @@ import kotlinx.coroutines.GlobalScope
 
 
 import kotlinx.coroutines.launch
+import java.time.Instant
+import java.time.LocalDateTime
 
 
 class CrearObra : AppCompatActivity() {
@@ -34,7 +36,7 @@ class CrearObra : AppCompatActivity() {
     private lateinit var nombre: EditText
     private lateinit var descripcion: EditText
     private lateinit var estrellas: RatingBar
-    private lateinit var fecha: String
+    private lateinit var fecha: Instant
     private lateinit var botonCrear: Button
     private lateinit var botonVolver: Button
 
@@ -89,14 +91,14 @@ class CrearObra : AppCompatActivity() {
         var listaObras = Util.obtenerListaObras(database, this)
         botonCrear.setOnClickListener {
 
+            fecha = Instant.now()
             if (nombre.text.isEmpty() || descripcion.text.isEmpty() || rutaImagen == null) {
                 Toast.makeText(
                     this,
                     "Rellene todos los campos o selecione una imagen",
                     Toast.LENGTH_SHORT
                 ).show()
-            } else if (nombre.text.toString().toInt() > 2023 || nombre.text.toString().toInt() < 1500) { //t aqui va la fecha, no el nombre
-                Toast.makeText(this, "Año de fundación no válido", Toast.LENGTH_SHORT).show()
+
             } else if (Util.existeObra(
                     listaObras,
                     nombre.text.toString()
@@ -163,7 +165,7 @@ class CrearObra : AppCompatActivity() {
                         nombre.text.toString(),
                         descripcion.text.toString(),
                         estrellas.rating.toInt(),
-                        fecha,
+                        Util.parsearFecha(fecha),
                         linkImagen,
                         identificadorFile
                     )
@@ -171,7 +173,7 @@ class CrearObra : AppCompatActivity() {
 
                     Util.tostadaCorrutina(
                         activity, applicationContext,
-                        "Escudo descargado con éxito"
+                        "Imagen descargada con éxito"
                     )
                 }
                 finish()

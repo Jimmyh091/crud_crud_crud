@@ -23,6 +23,8 @@ import io.appwrite.services.Storage
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
+import java.time.Instant
+import java.time.LocalDateTime
 
 class EditarObra : AppCompatActivity() {
 
@@ -30,7 +32,6 @@ class EditarObra : AppCompatActivity() {
     private lateinit var nombre: EditText
     private lateinit var descripcion: EditText
     private lateinit var estrellas: RatingBar
-    private lateinit var fecha: String
     private lateinit var botonModificar: Button
     private lateinit var botonVolver: Button
 
@@ -59,7 +60,6 @@ class EditarObra : AppCompatActivity() {
         nombre = findViewById(R.id.nombre)
         descripcion = findViewById(R.id.descripcion)
         estrellas = findViewById(R.id.estrellas)
-        fecha = ""
         botonModificar = findViewById(R.id.botonModificar)
         botonVolver = findViewById(R.id.botonVolver)
         database = FirebaseDatabase.getInstance().reference
@@ -146,24 +146,23 @@ class EditarObra : AppCompatActivity() {
 
                         var imagen =
                             "https://cloud.appwrite.io/v1/storage/buckets/$id_bucket/files/$identificadorFile/preview?project=$id_projecto"
-                        val club = Obra(
+                        val obra = Obra(
                             identificadorObra,
                             nombre.text.toString(),
                             descripcion.text.toString(),
                             estrellas.rating.toInt(),
-                            fecha,
+                            Instant.now().toString(),
                             imagen,
                             identificadorFile
                         )
-                        Util.escribirObra(database, identificadorObra!!, club)
-                    }else if (nombre.text.toString()!=obra.nombre || descripcion.text.toString()!=obra.descripcion
-                        || fecha!=obra.fecha!!){
+                        Util.escribirObra(database, identificadorObra!!, obra)
+                    }else if (nombre.text.toString()!=obra.nombre || descripcion.text.toString()!=obra.descripcion){
                         val club = Obra(
                             identificadorObra,
                             nombre.text.toString(),
                             descripcion.text.toString(),
                             estrellas.rating.toInt(),
-                            fecha,
+                            Instant.now().toString(),
                             obra.rutaImagen,
                             obra.idImagen
                         )
