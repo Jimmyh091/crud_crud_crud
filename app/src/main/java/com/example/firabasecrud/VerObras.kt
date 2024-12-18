@@ -81,6 +81,9 @@ class VerObras : AppCompatActivity() {
                 listaAux = listaAux.sortedBy { it.estrellas }
                 adaptador = ObraAdaptador(listaAux.reversed().toMutableList())
                 recycler.adapter = adaptador
+            }else{
+                adaptador = ObraAdaptador(lista.toMutableList())
+                recycler.adapter = adaptador
             }
 
         }
