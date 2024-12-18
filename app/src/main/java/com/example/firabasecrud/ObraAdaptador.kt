@@ -44,7 +44,7 @@ class ObraAdaptador(private val listaObras: MutableList<Obra>) :
     override fun onBindViewHolder(holder: ObraViewHolder, position: Int) {
         val obraActual = lista_filtrada[position]
         holder.nombre.text = obraActual.nombre //t
-        holder.ciudad.text = obraActual.descripcion
+        holder.ciudad.text = obraActual.autor
         holder.fundacion.text = obraActual.fecha.toString() //t
 
         val URL:String?=when(obraActual.rutaImagen){

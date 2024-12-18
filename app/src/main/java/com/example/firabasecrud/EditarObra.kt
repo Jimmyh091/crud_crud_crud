@@ -30,7 +30,7 @@ class EditarObra : AppCompatActivity() {
 
     private lateinit var imagen: ImageView
     private lateinit var nombre: EditText
-    private lateinit var descripcion: EditText
+    private lateinit var autor: EditText
     private lateinit var estrellas: RatingBar
     private lateinit var botonModificar: Button
     private lateinit var botonVolver: Button
@@ -58,18 +58,18 @@ class EditarObra : AppCompatActivity() {
 
         imagen = findViewById(R.id.imagen)
         nombre = findViewById(R.id.nombre)
-        descripcion = findViewById(R.id.descripcion)
+        autor = findViewById(R.id.autor)
         estrellas = findViewById(R.id.estrellas)
         botonModificar = findViewById(R.id.botonModificar)
         botonVolver = findViewById(R.id.botonVolver)
         database = FirebaseDatabase.getInstance().reference
         //storage = FirebaseStorage.getInstance().reference
 
-        obra = intent.getSerializableExtra("club") as Obra
+        obra = intent.getSerializableExtra("obra") as Obra
 
         nombre.setText(obra.nombre)
-        descripcion.setText(obra.descripcion)
-
+        autor.setText(obra.autor)
+        estrellas.rating = obra.estrellas!!.toFloat()
 
         id_projecto = "674762dd002af7924291"
         id_bucket = "674762fb002a63512c24"
@@ -97,7 +97,7 @@ class EditarObra : AppCompatActivity() {
 
         listaObras = Util.obtenerListaObras(database, this)
         botonModificar.setOnClickListener {
-            if (nombre.text.isEmpty() || descripcion.text.isEmpty() ) {
+            if (nombre.text.isEmpty() || autor.text.isEmpty() || estrellas.rating == 0f ) {
                 Toast.makeText(
                     this,
                     "Rellene todos los campos o selecione una imagen",
@@ -149,18 +149,18 @@ class EditarObra : AppCompatActivity() {
                         val obra = Obra(
                             identificadorObra,
                             nombre.text.toString(),
-                            descripcion.text.toString(),
+                            autor.text.toString(),
                             estrellas.rating.toInt(),
                             Instant.now().toString(),
                             imagen,
                             identificadorFile
                         )
                         Util.escribirObra(database, identificadorObra!!, obra)
-                    }else if (nombre.text.toString()!=obra.nombre || descripcion.text.toString()!=obra.descripcion){
-                        val club = Obra(
+                    }else if (nombre.text.toString()!=obra.nombre || autor.text.toString()!=obra.autor){
+                        val obra = Obra(
                             identificadorObra,
                             nombre.text.toString(),
-                            descripcion.text.toString(),
+                            autor.text.toString(),
                             estrellas.rating.toInt(),
                             Instant.now().toString(),
                             obra.rutaImagen,

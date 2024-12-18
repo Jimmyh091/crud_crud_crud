@@ -9,4 +9,12 @@
     <color name="white">#FFFFFFFF</color>
     <color name="NBA_BLUE">#1d4289</color>
     <color name="NBA_RED">#c80f2e</color>
+    <color name="amarillo_claro">#ffd79c</color>
+    <color name="azul_marino">#003366</color>
+    <color name="gris_claro">#d3d3d3</color>
+    <color name="gris_oscuro">#595959</color>
+    <color name="marron">#4a3f35</color>
+    <color name="rosa_claro">#ff6f61</color>
+    <color name="verde">#98ff98</color>
+
 </resources>

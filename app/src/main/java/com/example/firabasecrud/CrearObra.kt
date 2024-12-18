@@ -34,7 +34,7 @@ class CrearObra : AppCompatActivity() {
 
     private lateinit var imagen: ImageView
     private lateinit var nombre: EditText
-    private lateinit var descripcion: EditText
+    private lateinit var autor: EditText
     private lateinit var estrellas: RatingBar
     private lateinit var fecha: Instant
     private lateinit var botonCrear: Button
@@ -65,7 +65,7 @@ class CrearObra : AppCompatActivity() {
         var activity = this
 
         nombre = findViewById(R.id.nombre)
-        descripcion = findViewById(R.id.descripcion)
+        autor = findViewById(R.id.autor)
         imagen = findViewById(R.id.imagen)
         estrellas = findViewById(R.id.estrellas)
         botonCrear = findViewById(R.id.botonCrear)
@@ -92,7 +92,7 @@ class CrearObra : AppCompatActivity() {
         botonCrear.setOnClickListener {
 
             fecha = Instant.now()
-            if (nombre.text.isEmpty() || descripcion.text.isEmpty() || rutaImagen == null) {
+            if (nombre.text.isEmpty() || autor.text.isEmpty() || rutaImagen == null) {
                 Toast.makeText(
                     this,
                     "Rellene todos los campos o selecione una imagen",
@@ -163,7 +163,7 @@ class CrearObra : AppCompatActivity() {
                     val obra = Obra(
                         identificadorObra,
                         nombre.text.toString(),
-                        descripcion.text.toString(),
+                        autor.text.toString(),
                         estrellas.rating.toInt(),
                         Util.parsearFecha(fecha),
                         linkImagen,
