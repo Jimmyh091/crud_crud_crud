@@ -50,7 +50,7 @@
         app:layout_constraintVertical_bias="0.0"
         tools:listitem="@layout/item_obra" />
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/volverInicio"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -59,6 +59,7 @@
         android:textStyle="bold"
         android:textColor="@color/white"
         android:backgroundTint="@color/azul"
+        app:cornerRadius="20dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"

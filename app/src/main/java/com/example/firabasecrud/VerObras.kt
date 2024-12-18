@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import android.widget.RatingBar
+import android.widget.Switch
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -23,7 +24,7 @@ class VerObras : AppCompatActivity() {
     private lateinit var volver: Button
 
     private lateinit var nombre : TextInputEditText
-    private lateinit var rating : RatingBar
+    private lateinit var rating : Switch
     private lateinit var recycler: RecyclerView
     private lateinit var lista:MutableList<Obra>
     private lateinit var db_ref: DatabaseReference
@@ -73,13 +74,18 @@ class VerObras : AppCompatActivity() {
             adaptador= ObraAdaptador(listaAux.toMutableList())
             recycler.adapter=adaptador
         }
-        rating.setOnClickListener {
-            listaAux = lista.sortedBy { it.estrellas }
-            adaptador= ObraAdaptador(listaAux.toMutableList())
-            recycler.adapter=adaptador
+
+        rating.setOnCheckedChangeListener { _, isChecked ->
+
+            if (isChecked) {
+                listaAux = listaAux.sortedBy { it.estrellas }
+                adaptador = ObraAdaptador(listaAux.reversed().toMutableList())
+                recycler.adapter = adaptador
+            }
+
         }
 
-        adaptador= ObraAdaptador(listaAux.toMutableList())
+        adaptador= ObraAdaptador(lista)
         recycler.adapter=adaptador
         recycler.setHasFixedSize(true)
         recycler.layoutManager= LinearLayoutManager(applicationContext)
@@ -95,9 +101,4 @@ class VerObras : AppCompatActivity() {
         return obra.nombre!!.contains(nombre.text.toString())
 
     }
-
-    fun ordenar(lista : MutableList<Obra>) : MutableList<Obra>{
-
-    }
-
 }
