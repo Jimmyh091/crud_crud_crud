@@ -20,7 +20,7 @@ import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 
 class ObraAdaptador(private val listaObras: MutableList<Obra>) :
-    RecyclerView.Adapter<`ObraAdaptador`.ObraViewHolder>() {
+    RecyclerView.Adapter<ObraAdaptador.ObraViewHolder>() {
 
     private lateinit var contexto: Context
     private var lista_filtrada = listaObras
@@ -36,7 +36,7 @@ class ObraAdaptador(private val listaObras: MutableList<Obra>) :
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ObraViewHolder {
-        val vista_item = LayoutInflater.from(parent.context).inflate(R.layout.item_club,parent,false)
+        val vista_item = LayoutInflater.from(parent.context).inflate(R.layout.item_obra,parent,false)
         contexto=parent.context
         return ObraViewHolder(vista_item)
     }

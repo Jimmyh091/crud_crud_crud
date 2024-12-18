@@ -4,7 +4,6 @@ import android.annotation.SuppressLint
 import android.net.Uri
 import android.os.Bundle
 import android.provider.OpenableColumns
-import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageView
 import android.widget.RatingBar
@@ -27,7 +26,6 @@ import kotlinx.coroutines.GlobalScope
 
 import kotlinx.coroutines.launch
 import java.time.Instant
-import java.time.LocalDateTime
 
 
 class CrearObra : AppCompatActivity() {
@@ -56,7 +54,7 @@ class CrearObra : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        setContentView(R.layout.activity_crear_club)
+        setContentView(R.layout.activity_crear_obra)
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
