@@ -17,19 +17,15 @@ import kotlinx.coroutines.tasks.await
 import java.text.SimpleDateFormat
 import java.time.Instant
 import java.time.format.DateTimeFormatter
+import java.util.Date
+import java.util.Locale
 
 class Util {
     companion object {
 
-        fun parsearFecha(fecha: Instant): String {
-
-            SimpleDateFormat("yyyy-MM-dd").format(fecha.toEpochMilli())
-
-            val fechaInstant = Instant.parse(fecha.toString())
-            val fechaFormateada = fechaInstant.atZone(java.time.ZoneId.systemDefault())
-            val fechaFormateadaString = fechaFormateada.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"))
-
-            return fechaFormateadaString
+        fun obtenerFecha(): String {
+            val formatter = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
+            return formatter.format(Date())
         }
 
         fun existeObra(obras: List<Obra>, nombre: String): Boolean {

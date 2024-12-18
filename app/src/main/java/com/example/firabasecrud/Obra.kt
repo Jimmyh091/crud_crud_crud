@@ -8,7 +8,7 @@ data class Obra(
     var nombre : String? = "",
     var autor : String? = "",
     var estrellas : Int? = 0,
-    var fecha : String? = Util.parsearFecha(Instant.now()),
+    var fecha : String? = Util.obtenerFecha(),
     var rutaImagen : String? = "",
     var idImagen : String? = ""
 ):Serializable
