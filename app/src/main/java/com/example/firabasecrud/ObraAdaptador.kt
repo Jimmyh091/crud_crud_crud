@@ -85,7 +85,7 @@ class ObraAdaptador(private val listaObras: MutableList<Obra>) :
 
             lista_filtrada.removeAt(position)
             //storage_ref.child("nba").child("clubs").child(obraActual.id!!).delete() //?
-            db_ref.child("nba").child("clubs").child(obraActual.id!!).removeValue() //?
+            db_ref.child("arte").child("obras").child(obraActual.id!!).removeValue() //?
             Toast.makeText(contexto,"Obra borrado",Toast.LENGTH_SHORT).show()
             notifyItemRemoved(position)
             notifyItemRangeChanged(position,lista_filtrada.size)

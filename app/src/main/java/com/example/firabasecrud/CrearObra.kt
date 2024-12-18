@@ -107,7 +107,7 @@ class CrearObra : AppCompatActivity() {
                 Toast.makeText(this, "Obra ya existe", Toast.LENGTH_SHORT).show()
             } else {
 
-                val identificadorObra = database.child("nba").child("clubs").push().key
+                val identificadorObra = database.child("arte").child("obras").push().key
 
                 GlobalScope.launch(Dispatchers.IO) {
                     //val inputStream = contentResolver.openInputStream(rutaImagen!!)

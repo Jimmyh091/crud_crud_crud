@@ -40,8 +40,8 @@ class VerObras : AppCompatActivity() {
 
         db_ref= FirebaseDatabase.getInstance().reference
         lista= mutableListOf()
-        db_ref.child("nba")
-            .child("clubs")
+        db_ref.child("arte")
+            .child("obras")
             .addValueEventListener(object : ValueEventListener {
                 override fun onDataChange(snapshot: DataSnapshot) {
                     lista.clear()

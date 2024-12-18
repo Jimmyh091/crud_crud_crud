@@ -37,7 +37,7 @@ class Util {
         fun obtenerListaObras(db_ref: DatabaseReference, contexto: Context): MutableList<Obra> {
             val listaObras = mutableListOf<Obra>()
 
-            db_ref.child("nba").child("clubs")
+            db_ref.child("arte").child("obras")
                 .addValueEventListener(object : ValueEventListener {
                     override fun onDataChange(snapshot: DataSnapshot) {
                         snapshot.children.forEach { obra ->
@@ -56,14 +56,14 @@ class Util {
         }
 
         fun escribirObra(db_ref: DatabaseReference,id: String, obra : Obra) {
-            db_ref.child("nba").child("clubs").child(id).setValue(obra)
+            db_ref.child("arte").child("obras").child(id).setValue(obra)
         }
 
         //LO CAMBIAREMOS
         suspend fun guardarImagen(almacen: StorageReference, id: String, imagen: Uri): String {
             var urlAlmacen: Uri
             urlAlmacen =
-                almacen.child("escudos").child(id).putFile(imagen).await()
+                almacen.child("imagenes").child(id).putFile(imagen).await()
                     .storage.downloadUrl.await()
 
             return urlAlmacen.toString()
