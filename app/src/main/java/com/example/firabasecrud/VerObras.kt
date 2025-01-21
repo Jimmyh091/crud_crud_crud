@@ -78,7 +78,7 @@ class VerObras : AppCompatActivity() {
         rating.setOnCheckedChangeListener { _, isChecked ->
 
             if (isChecked) {
-                listaAux = listaAux.sortedBy { it.estrellas }
+                listaAux = lista.sortedBy { it.estrellas }
                 adaptador = ObraAdaptador(listaAux.reversed().toMutableList())
                 recycler.adapter = adaptador
             }else{

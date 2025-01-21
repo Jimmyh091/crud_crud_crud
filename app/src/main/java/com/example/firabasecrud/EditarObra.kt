@@ -96,7 +96,7 @@ class EditarObra : AppCompatActivity() {
 
         listaObras = Util.obtenerListaObras(database, this)
         botonModificar.setOnClickListener {
-            if (nombre.text.isEmpty() || autor.text.isEmpty() || estrellas.rating == 0f ) {
+            if (nombre.text.isEmpty() || autor.text.isEmpty() || estrellas.rating <= 0f ) {
                 Toast.makeText(
                     this,
                     "Rellene todos los campos o selecione una imagen",
@@ -107,7 +107,7 @@ class EditarObra : AppCompatActivity() {
                     nombre.text.toString()
                 ) && nombre.text.toString().lowercase() != obra.nombre!!.lowercase()
             ) {
-                Toast.makeText(this, "Club ya existe", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Obra ya existe", Toast.LENGTH_SHORT).show()
             } else {
 
                 val identificadorObra = obra.id
@@ -155,7 +155,7 @@ class EditarObra : AppCompatActivity() {
                             identificadorFile
                         )
                         Util.escribirObra(database, identificadorObra!!, obra)
-                    }else if (nombre.text.toString()!=obra.nombre || autor.text.toString()!=obra.autor){
+                    }else if (nombre.text.toString() != obra.nombre || autor.text.toString() != obra.autor|| estrellas.rating != obra.estrellas){
                         val obra = Obra(
                             identificadorObra,
                             nombre.text.toString(),

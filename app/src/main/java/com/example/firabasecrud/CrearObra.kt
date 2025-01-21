@@ -91,7 +91,7 @@ class CrearObra : AppCompatActivity() {
         botonCrear.setOnClickListener {
 
             fecha = Instant.now()
-            if (nombre.text.isEmpty() || autor.text.isEmpty() || rutaImagen == null) {
+            if (nombre.text.isEmpty() || autor.text.isEmpty() || rutaImagen == null || estrellas.rating <= 0) {
                 Toast.makeText(
                     this,
                     "Rellene todos los campos o selecione una imagen",
@@ -163,7 +163,7 @@ class CrearObra : AppCompatActivity() {
                         identificadorObra,
                         nombre.text.toString(),
                         autor.text.toString(),
-                        estrellas.rating.toFloat(),
+                        estrellas.rating,
                         Util.obtenerFecha(),
                         linkImagen,
                         identificadorFile
