@@ -71,8 +71,8 @@ class ObraAdaptador(private val listaObras: MutableList<Obra>) :
         holder.borrar.setOnClickListener{
             val db_ref= FirebaseDatabase.getInstance().reference
             //val storage_ref= FirebaseStorage.getInstance().reference //?
-            val id_projecto = "674762dd002af7924291"
-            val id_bucket = "674762fb002a63512c24"
+            val id_projecto = "675c8d190017d6961f5e"
+            val id_bucket = "675c8d79001356207764"
 
             val client = Client()
                 .setEndpoint("https://cloud.appwrite.io/v1")    // Your API Endpoint
@@ -89,7 +89,7 @@ class ObraAdaptador(private val listaObras: MutableList<Obra>) :
             lista_filtrada.removeAt(position)
             //storage_ref.child("nba").child("clubs").child(obraActual.id!!).delete() //?
             db_ref.child("arte").child("obras").child(obraActual.id!!).removeValue() //?
-            Toast.makeText(contexto,"Obra borrado",Toast.LENGTH_SHORT).show()
+            Toast.makeText(contexto,"Obra borrada",Toast.LENGTH_SHORT).show()
             notifyItemRemoved(position)
             notifyItemRangeChanged(position,lista_filtrada.size)
 
