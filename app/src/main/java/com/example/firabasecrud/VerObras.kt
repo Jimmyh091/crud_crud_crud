@@ -70,7 +70,12 @@ class VerObras : AppCompatActivity() {
         var listaAux = listOf<Obra>()
         nombre.doOnTextChanged{
             text, start, before, count ->
-            listaAux = lista.filter { filtrar(it) }
+            if (rating.isChecked){
+                listaAux = lista.filter { filtrar(it) }.sortedByDescending { it.estrellas }
+            }else{
+                listaAux = lista.filter { filtrar(it) }
+            }
+
             adaptador= ObraAdaptador(listaAux.toMutableList())
             recycler.adapter=adaptador
         }
@@ -78,7 +83,7 @@ class VerObras : AppCompatActivity() {
         rating.setOnCheckedChangeListener { _, isChecked ->
 
             if (isChecked) {
-                listaAux = lista.sortedBy { it.estrellas }
+                listaAux = lista.filter { filtrar(it) }.sortedBy { it.estrellas }
                 adaptador = ObraAdaptador(listaAux.reversed().toMutableList())
                 recycler.adapter = adaptador
             }else{
