@@ -10,9 +10,12 @@ import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.firabasecrud.R
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
 
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
@@ -54,7 +57,6 @@ class VerMensaje : AppCompatActivity() {
                 val id_mensaje = db_ref.child("chat").child("mensajes").push().key!!
                 val nuevo_mensaje = Mensaje(
                     id_mensaje,
-                    club_actual.id,
                     "",
                     "",
                     mensaje,
@@ -66,8 +68,6 @@ class VerMensaje : AppCompatActivity() {
                 Toast.makeText(applicationContext, "Escribe algo", Toast.LENGTH_SHORT).show()
             }
         }
-
-
 
         db_ref.child("chat").child("mensajes").addChildEventListener(object : ChildEventListener {
             override fun onChildAdded(snapshot: DataSnapshot, previousChildName: String?) {
