@@ -12,14 +12,27 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FirabaseCRUD"
         tools:targetApi="31">
+
         <activity
-            android:name=".EditarObra"
+            android:name=".chat.VerChat"
             android:exported="false" />
         <activity
-            android:name=".VerObras"
+            android:name=".genero.VerGeneros"
             android:exported="false" />
         <activity
-            android:name=".CrearObra"
+            android:name=".genero.EditarGenero"
+            android:exported="false" />
+        <activity
+            android:name=".genero.CrearGenero"
+            android:exported="false" />
+        <activity
+            android:name=".obras.EditarObra"
+            android:exported="false" />
+        <activity
+            android:name=".obras.VerObras"
+            android:exported="false" />
+        <activity
+            android:name=".obras.CrearObra"
             android:exported="false" />
         <activity
             android:name=".MenuPrincipal"

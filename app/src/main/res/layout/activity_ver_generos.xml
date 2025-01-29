@@ -3,10 +3,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
-    android:background="@color/amarillo_claro"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".obras.VerObras">
+    android:background="@color/amarillo_claro"
+    tools:context=".genero.VerGeneros">
+
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/tilnombre"
@@ -42,19 +43,19 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/listaObras"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="0dp"
-        android:padding="5dp"
         android:layout_marginTop="20dp"
-        android:scrollbars="vertical"
         android:background="@color/amarillo_claro"
-        app:layout_constraintTop_toBottomOf="@id/tilnombre"
+        android:padding="5dp"
+        android:scrollbars="vertical"
         app:layout_constraintBottom_toTopOf="@id/volverInicio"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tilnombre"
         app:layout_constraintVertical_bias="0.0"
-        tools:listitem="@layout/item_obra" />
+        tools:listitem="@layout/item_genero" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/volverInicio"
@@ -83,6 +84,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/estrella" />
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

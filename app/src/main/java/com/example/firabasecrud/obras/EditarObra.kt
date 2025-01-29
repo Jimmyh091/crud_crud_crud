@@ -1,4 +1,4 @@
-package com.example.firabasecrud
+package com.example.firabasecrud.obras
 
 import android.annotation.SuppressLint
 import android.net.Uri
@@ -14,6 +14,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.bumptech.glide.Glide
+import com.example.firabasecrud.R
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import io.appwrite.Client
@@ -167,8 +168,10 @@ class EditarObra : AppCompatActivity() {
                         )
                         Util.escribirObra(database, identificadorObra!!, obra)
 
-                        Util.tostadaCorrutina(activity,applicationContext,
-                            "Obra actualizada con éxito")
+                        Util.tostadaCorrutina(
+                            activity, applicationContext,
+                            "Obra actualizada con éxito"
+                        )
                     }
                 }
                 finish()

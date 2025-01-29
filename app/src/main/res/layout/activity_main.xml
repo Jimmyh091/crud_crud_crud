@@ -73,12 +73,12 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/til_nombreUs"
-        android:layout_width="0dp"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toTopOf="@+id/crearObra"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/usuario"
-        app:layout_constraintEnd_toStartOf="enviar">
+        app:layout_constraintTop_toBottomOf="@id/usuario">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/tiet_nombreUs"
@@ -99,14 +99,31 @@
 
     <ImageView
         android:id="@+id/enviar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="@+id/til_nombreUs"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.511"
         app:layout_constraintStart_toEndOf="@id/til_nombreUs"
         app:layout_constraintTop_toTopOf="@+id/til_nombreUs"
-        app:layout_constraintVertical_bias="0.527"
         tools:src="@tools:sample/avatars" />
+
+    <Button
+        android:id="@+id/creargenero"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="crear genero"
+        android:layout_margin="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="editar genero"
+        android:textSize="13sp"
+        app:layout_constraintEnd_toEndOf="@+id/creargenero"
+        app:layout_constraintStart_toStartOf="@+id/creargenero"
+        app:layout_constraintTop_toBottomOf="@+id/creargenero" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

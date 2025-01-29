@@ -1,4 +1,4 @@
-package com.example.firabasecrud
+package com.example.firabasecrud.obras
 
 import android.content.Context
 import android.content.Intent
@@ -12,6 +12,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.example.firabasecrud.R
 import com.google.firebase.database.FirebaseDatabase
 import io.appwrite.Client
 import io.appwrite.services.Storage
@@ -63,7 +64,7 @@ class ObraAdaptador(private val listaObras: MutableList<Obra>) :
             .into(holder.miniatura)
 
         holder.editar.setOnClickListener{
-            val intent= Intent(contexto,EditarObra::class.java)
+            val intent= Intent(contexto, EditarObra::class.java)
             intent.putExtra("obra",obraActual)
             contexto.startActivity(intent)
         }

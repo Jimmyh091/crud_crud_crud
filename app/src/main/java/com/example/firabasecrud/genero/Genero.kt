@@ -1,4 +1,4 @@
-package com.example.firabasecrud
+package com.example.firabasecrud.genero
 
 import java.io.Serializable
 

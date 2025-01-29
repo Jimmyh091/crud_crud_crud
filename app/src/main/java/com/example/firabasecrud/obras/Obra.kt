@@ -1,7 +1,6 @@
-package com.example.firabasecrud
+package com.example.firabasecrud.obras
 
 import java.io.Serializable
-import java.time.Instant
 
 data class Obra(
     var id : String? = "",

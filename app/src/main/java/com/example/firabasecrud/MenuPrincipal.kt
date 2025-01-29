@@ -7,11 +7,15 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.example.firabasecrud.obras.CrearObra
+import com.example.firabasecrud.obras.VerObras
 
 class MenuPrincipal : AppCompatActivity() {
 
     private lateinit var botonCrear: Button
     private lateinit var botonLista: Button
+    private lateinit var botonCrearGenero: Button
+    private lateinit var botonEditarGenero: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -23,10 +27,11 @@ class MenuPrincipal : AppCompatActivity() {
             insets
         }
 
-
         botonCrear = findViewById(R.id.crearObra)
         botonLista = findViewById(R.id.listaObras)
 
+        botonCrearGenero = findViewById(R.id.creargenero)
+        botonEditarGenero = findViewById(R.id.button2)
 
         botonCrear.setOnClickListener {
             val intent = Intent(this, CrearObra::class.java)
