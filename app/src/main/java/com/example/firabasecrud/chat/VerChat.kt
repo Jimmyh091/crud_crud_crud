@@ -80,9 +80,9 @@ class VerChat : AppCompatActivity() {
                     val pojo_mensaje = snapshot.getValue(Mensaje::class.java)
                     pojo_mensaje!!.id_receptor = usuario_actual
                     if(pojo_mensaje.id_receptor==pojo_mensaje.id_emisor){
-                        pojo_mensaje.imagen_emisor=R.drawable.archivo_vacio // todo
+                        pojo_mensaje.imagen_emisor=R.drawable.yo // todo
                     }else{
-                        pojo_mensaje.imagen_emisor=R.drawable.archivo_vacio // todo
+                        pojo_mensaje.imagen_emisor=R.drawable.otro // todo
                     }
 
                     runOnUiThread {
