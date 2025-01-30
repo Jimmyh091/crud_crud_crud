@@ -11,6 +11,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.firabasecrud.chat.VerChat
+import com.example.firabasecrud.genero.CrearGenero
+import com.example.firabasecrud.genero.EditarGenero
 import com.example.firabasecrud.obras.CrearObra
 import com.example.firabasecrud.obras.VerObras
 import com.google.android.material.textfield.TextInputEditText
@@ -51,8 +53,8 @@ class MenuPrincipal : AppCompatActivity() {
             var text = nomUs.text.toString()
             if (text.isNotBlank() && text.isNotEmpty()) {
 
-                var tituloUs = findViewById<TextView>(R.id.usuario).text.toString()
-                tituloUs = "Nombre usuario: $text"
+                var tituloUs = findViewById<TextView>(R.id.usuario)
+                tituloUs.text = "Nombre usuario: $text"
                 nomUs.setText("")
 
                 usuario = text
@@ -82,5 +84,14 @@ class MenuPrincipal : AppCompatActivity() {
             startActivity(intent)
         }
 
+        botonCrearGenero.setOnClickListener {
+            val intent = Intent(this, CrearGenero::class.java)
+            startActivity(intent)
+        }
+
+        botonEditarGenero.setOnClickListener {
+            val intent = Intent(this, EditarGenero::class.java)
+            startActivity(intent)
+        }
     }
 }
