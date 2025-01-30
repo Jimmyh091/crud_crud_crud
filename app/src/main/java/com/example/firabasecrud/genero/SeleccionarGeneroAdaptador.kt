@@ -45,7 +45,8 @@ class SeleccionarGeneroAdaptador(private val listaGenero: MutableList<Genero>) :
         holder.checkbox.isChecked = false
 
         holder.checkbox.setOnCheckedChangeListener { _, isChecked ->
-            holder.checkbox.isChecked = isChecked
+            holder.checkbox.isSelected = isChecked
+            Log.v("genero", "a")
         }
     }
 
