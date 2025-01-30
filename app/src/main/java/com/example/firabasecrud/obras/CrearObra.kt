@@ -15,6 +15,7 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.example.firabasecrud.MenuPrincipal
 import com.example.firabasecrud.R
 import com.example.firabasecrud.genero.SeleccionarGeneros
 import com.google.android.material.button.MaterialButton
@@ -31,6 +32,7 @@ import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import java.time.Instant
 
+private var hacerIntent = false
 
 class CrearObra : AppCompatActivity() {
 
@@ -43,6 +45,8 @@ class CrearObra : AppCompatActivity() {
     private lateinit var botonCrear: MaterialButton
     private lateinit var botonVolver: MaterialButton
     private lateinit var botonAniadirGeneros: MaterialButton
+
+    private var generos: MutableList<String>? = mutableListOf()
 
     //Firebase
     private lateinit var database: DatabaseReference
@@ -76,6 +80,11 @@ class CrearObra : AppCompatActivity() {
         botonVolver = findViewById(R.id.botonVolver)
         botonAniadirGeneros = findViewById(R.id.aniadirgeneros)
 
+        if (hacerIntent){
+            var generos = intent.getStringArrayListExtra("generos") as MutableList<String>
+            Log.v("obtenergenero", "${generos}")
+        }
+
         //firebase
         database = FirebaseDatabase.getInstance().reference
         //storage = FirebaseStorage.getInstance().reference
@@ -91,6 +100,7 @@ class CrearObra : AppCompatActivity() {
         val storage = Storage(client)
 
         botonAniadirGeneros.setOnClickListener {
+            hacerIntent = true
             val intent = Intent(this, SeleccionarGeneros::class.java)
             Log.v("genero", "botonVerGeneros")
             startActivity(intent)
@@ -171,12 +181,18 @@ class CrearObra : AppCompatActivity() {
                     var linkImagen =
                         "https://cloud.appwrite.io/v1/storage/buckets/$id_bucket/files/$identificadorFile/preview?project=$id_projecto"
 
+                    var generosAux = mutableListOf<String>()
+
+                    if (generos == null){
+                        generosAux = generos as MutableList<String>
+                    }
+
                     val obra = Obra(
                         identificadorObra,
                         nombre.text.toString(),
                         autor.text.toString(),
                         estrellas.rating,
-                        listOf(),
+                        generosAux,
                         Util.obtenerFecha(),
                         linkImagen,
                         identificadorFile
@@ -188,12 +204,15 @@ class CrearObra : AppCompatActivity() {
                         "Imagen descargada con éxito"
                     )
                 }
-                finish()
+
+                var intent = Intent(this, MenuPrincipal::class.java)
+                startActivity(intent)
             }
 
 
         }
         botonVolver.setOnClickListener {
+            hacerIntent = false
             finish()
         }
 

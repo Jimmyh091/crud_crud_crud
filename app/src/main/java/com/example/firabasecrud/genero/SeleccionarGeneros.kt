@@ -1,5 +1,6 @@
 package com.example.firabasecrud.genero
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
@@ -13,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.firabasecrud.R
 import com.example.firabasecrud.databinding.ActivitySeleccionarGenerosBinding
 import com.example.firabasecrud.databinding.ItemGeneroCheckboxBinding
+import com.example.firabasecrud.obras.CrearObra
 import com.google.android.material.textfield.TextInputEditText
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -115,7 +117,17 @@ class SeleccionarGeneros : AppCompatActivity(){
 
         enviar.setOnClickListener {
             val generosSeleccionados = listaAux.filter { it.checked }
-            var
+            Log.v("GGGGG", "${ generosSeleccionados}")
+            var intent = Intent(this, CrearObra::class.java)
+
+            var generosId = arrayListOf<String>()
+
+            for (it in generosSeleccionados){
+                generosId.add(it.id.toString())
+            }
+
+            intent.putStringArrayListExtra("generos", generosId)
+            startActivity(intent)
         }
     }
 
