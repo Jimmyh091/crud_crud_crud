@@ -2,6 +2,7 @@ package com.example.firabasecrud
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
@@ -13,6 +14,7 @@ import androidx.core.view.WindowInsetsCompat
 import com.example.firabasecrud.chat.VerChat
 import com.example.firabasecrud.genero.CrearGenero
 import com.example.firabasecrud.genero.EditarGenero
+import com.example.firabasecrud.genero.SeleccionarGeneros
 import com.example.firabasecrud.genero.VerGeneros
 import com.example.firabasecrud.obras.CrearObra
 import com.example.firabasecrud.obras.VerObras

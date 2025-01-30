@@ -1,9 +1,11 @@
 package com.example.firabasecrud.obras
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.provider.OpenableColumns
+import android.util.Log
 import android.widget.EditText
 import android.widget.ImageView
 import android.widget.RatingBar
@@ -14,6 +16,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.firabasecrud.R
+import com.example.firabasecrud.genero.SeleccionarGeneros
 import com.google.android.material.button.MaterialButton
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
@@ -39,6 +42,7 @@ class CrearObra : AppCompatActivity() {
     private lateinit var fecha: Instant
     private lateinit var botonCrear: MaterialButton
     private lateinit var botonVolver: MaterialButton
+    private lateinit var botonAniadirGeneros: MaterialButton
 
     //Firebase
     private lateinit var database: DatabaseReference
@@ -70,6 +74,7 @@ class CrearObra : AppCompatActivity() {
         estrellas = findViewById(R.id.estrellas)
         botonCrear = findViewById(R.id.botonCrear)
         botonVolver = findViewById(R.id.botonVolver)
+        botonAniadirGeneros = findViewById(R.id.aniadirgeneros)
 
         //firebase
         database = FirebaseDatabase.getInstance().reference
@@ -84,6 +89,12 @@ class CrearObra : AppCompatActivity() {
             .setProject(id_projecto)
 
         val storage = Storage(client)
+
+        botonAniadirGeneros.setOnClickListener {
+            val intent = Intent(this, SeleccionarGeneros::class.java)
+            Log.v("genero", "botonVerGeneros")
+            startActivity(intent)
+        }
 
         imagen.setOnClickListener {
             accesoGaleria.launch("image/*")
@@ -165,6 +176,7 @@ class CrearObra : AppCompatActivity() {
                         nombre.text.toString(),
                         autor.text.toString(),
                         estrellas.rating,
+                        listOf(),
                         Util.obtenerFecha(),
                         linkImagen,
                         identificadorFile
