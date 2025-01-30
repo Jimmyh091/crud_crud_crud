@@ -10,6 +10,8 @@ import androidx.core.widget.doOnTextChanged
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.firabasecrud.R
+import com.example.firabasecrud.databinding.ActivitySeleccionarGenerosBinding
+import com.example.firabasecrud.databinding.ItemGeneroCheckboxBinding
 import com.google.android.material.textfield.TextInputEditText
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -38,7 +40,7 @@ import com.google.firebase.database.ValueEventListener
     }
 }*/
 
-class SeleccionarGeneros : AppCompatActivity(), OnGeneroClickedListener, OnGeneroChecked {
+class SeleccionarGeneros : AppCompatActivity(){
     private lateinit var volver: Button
 
     private lateinit var nombre: TextInputEditText
@@ -47,21 +49,23 @@ class SeleccionarGeneros : AppCompatActivity(), OnGeneroClickedListener, OnGener
     private lateinit var db_ref: DatabaseReference
     private lateinit var adaptador: SeleccionarGeneroAdaptador
 
+    private lateinit var binding: ActivitySeleccionarGenerosBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        binding = ActivitySeleccionarGenerosBinding.inflate(layoutInflater)
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        setContentView(R.layout.activity_seleccionar_generos)
+        setContentView(binding.root)
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
 
-        nombre = findViewById(R.id.tietnombre)
+        nombre = binding.tietnombre
 
-        recycler = findViewById(R.id.listaGeneros)
-        volver = findViewById(R.id.volverInicio)
+        recycler = binding.listaGeneros
+        volver = binding.volverInicio
 
         db_ref = FirebaseDatabase.getInstance().reference
         lista = mutableListOf()
@@ -108,11 +112,11 @@ class SeleccionarGeneros : AppCompatActivity(), OnGeneroClickedListener, OnGener
         return genero.nombre!!.contains(nombre.text.toString())
     }
 
-    override fun onGeneroClicked(genero: Genero) {
+    fun onGeneroClicked(genero: Genero) {
         TODO("Not yet implemented")
     }
 
-    override fun onGeneroChecked(genero: Genero) {
+    fun onGeneroChecked(genero: Genero) {
         TODO("Not yet implemented")
     }
 }

@@ -1,6 +1,7 @@
 package com.example.firabasecrud.genero
 
 import android.content.Context
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -37,6 +38,8 @@ class SeleccionarGeneroAdaptador(private val listaGenero: MutableList<Genero>) :
 
     override fun onBindViewHolder(holder: SeleccionarGeneroViewHolder, position: Int) {
         val generoActual = lista_filtrada[position]
+
+        Log.v("genero", "${generoActual.nombre}")
         holder.checkbox.text = generoActual.nombre
 
         holder.checkbox.isChecked = false
