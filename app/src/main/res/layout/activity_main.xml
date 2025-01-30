@@ -27,8 +27,8 @@
         android:layout_marginStart="20dp"
         android:layout_marginTop="100dp"
         android:layout_marginEnd="20dp"
-        android:backgroundTint="@color/azul"
         android:text="Crear Obra"
+        android:backgroundTint="@color/azul"
         android:textColor="@color/white"
         app:cornerRadius="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -78,6 +78,9 @@
         app:layout_constraintBottom_toTopOf="@+id/crearObra"
         app:layout_constraintEnd_toEndOf="parent"
         android:textColorHint="@color/white"
+        app:boxStrokeColor="@color/amarillo"
+        app:boxBackgroundColor="@color/amarillo"
+        app:hintTextColor="@color/white"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/usuario">
 
@@ -86,6 +89,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/amarillo"
+            android:textColorHighlight="@color/amarillo"
+            android:outlineSpotShadowColor="@color/amarillo"
+            android:shadowColor="@color/amarillo"
             android:textColorHint="@color/white"
             android:textColor="@color/white"
             android:hint="nombre" />
@@ -117,6 +123,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="crear genero"
+        android:backgroundTint="@color/azul"
+        android:textColor="@color/white"
+        app:cornerRadius="20dp"
         android:layout_margin="20dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -126,6 +135,9 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="ver generos"
+        android:backgroundTint="@color/azul"
+        android:textColor="@color/white"
+        app:cornerRadius="20dp"
         app:layout_constraintEnd_toEndOf="@+id/creargenero"
         app:layout_constraintStart_toStartOf="@+id/creargenero"
         app:layout_constraintTop_toBottomOf="@+id/creargenero" />
