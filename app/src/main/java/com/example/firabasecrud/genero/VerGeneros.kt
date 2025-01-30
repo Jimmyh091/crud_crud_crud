@@ -21,13 +21,12 @@ import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 
 // creo que no deberia borrar esta clase
-
 class VerGeneros : AppCompatActivity() {
     private lateinit var volver: Button
 
-    private lateinit var nombre : TextInputEditText
+    private lateinit var nombre: TextInputEditText
     private lateinit var recycler: RecyclerView
-    private lateinit var lista:MutableList<Genero>
+    private lateinit var lista: MutableList<Genero>
     private lateinit var db_ref: DatabaseReference
     private lateinit var adaptador: GeneroAdaptador
 
@@ -35,30 +34,31 @@ class VerGeneros : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        setContentView(R.layout.activity_ver_obras)
+        setContentView(R.layout.activity_ver_generos)
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
 
-        nombre=findViewById(R.id.tietnombre)
+        nombre = findViewById(R.id.tietnombre)
 
-        recycler=findViewById(R.id.listaGeneros)
-        volver=findViewById(R.id.volverInicio)
+        recycler = findViewById(R.id.listaGeneros)
+        volver = findViewById(R.id.volverInicio)
 
-        db_ref= FirebaseDatabase.getInstance().reference
-        lista= mutableListOf()
+        db_ref = FirebaseDatabase.getInstance().reference
+        lista = mutableListOf()
+
         db_ref.child("arte")
-            .child("obras")
+            .child("generos")
             .addValueEventListener(object : ValueEventListener {
                 override fun onDataChange(snapshot: DataSnapshot) {
                     lista.clear()
-                    snapshot.children.forEach{ hijo: DataSnapshot?->
-                        val pojoObra=hijo?.getValue(Obra::class.java)
-                        lista.add(pojoObra!!)
+                    snapshot.children.forEach { hijo: DataSnapshot? ->
+                        val pojoGenero = hijo?.getValue(Genero::class.java)
+                        lista.add(pojoGenero!!)
                     }
-                    //Jugar con esto para demostrar que no es un codigo sincrono
+                    // Notificar que los datos han cambiado
                     recycler.adapter?.notifyDataSetChanged()
                 }
 
@@ -67,46 +67,41 @@ class VerGeneros : AppCompatActivity() {
                 }
             })
 
-        var listaAux = listOf<Obra>()
-        nombre.doOnTextChanged{
-                text, start, before, count ->
-            if (rating.isChecked){
-                listaAux = lista.filter { filtrar(it) }.sortedByDescending { it.estrellas }
-            }else{
+        var listaAux = listOf<Genero>()
+        nombre.doOnTextChanged { text, start, before, count ->
+            if (rating.isChecked) {
+                listaAux = lista.filter { filtrar(it) }.sortedByDescending { it.nombre }
+            } else {
                 listaAux = lista.filter { filtrar(it) }
             }
 
-            adaptador= ObraAdaptador(listaAux.toMutableList())
-            recycler.adapter=adaptador
+            adaptador = GeneroAdaptador(listaAux.toMutableList())
+            recycler.adapter = adaptador
         }
 
         rating.setOnCheckedChangeListener { _, isChecked ->
-
             if (isChecked) {
-                listaAux = lista.filter { filtrar(it) }.sortedBy { it.estrellas }
-                adaptador = ObraAdaptador(listaAux.reversed().toMutableList())
+                listaAux = lista.filter { filtrar(it) }.sortedBy { it.nombre }
+                adaptador = GeneroAdaptador(listaAux.reversed().toMutableList())
                 recycler.adapter = adaptador
-            }else{
-                adaptador = ObraAdaptador(lista.toMutableList())
+            } else {
+                adaptador = GeneroAdaptador(lista.toMutableList())
                 recycler.adapter = adaptador
             }
-
         }
 
-        adaptador= ObraAdaptador(lista)
-        recycler.adapter=adaptador
+        adaptador = GeneroAdaptador(lista)
+        recycler.adapter = adaptador
         recycler.setHasFixedSize(true)
-        recycler.layoutManager= LinearLayoutManager(applicationContext)
+        recycler.layoutManager = LinearLayoutManager(applicationContext)
 
-        volver.setOnClickListener{
+        volver.setOnClickListener {
             finish()
         }
-
     }
 
-    fun filtrar(obra : Obra) : Boolean{
-
-        return obra.nombre!!.contains(nombre.text.toString())
-
+    fun filtrar(genero: Genero): Boolean {
+        return genero.nombre!!.contains(nombre.text.toString())
     }
+}
 }

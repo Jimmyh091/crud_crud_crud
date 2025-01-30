@@ -14,8 +14,6 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.bumptech.glide.Glide
 import com.example.firabasecrud.R
-import com.example.firabasecrud.obras.Obra
-import com.example.firabasecrud.obras.UtilGenero
 import com.google.android.material.textfield.TextInputEditText
 import com.google.firebase.database.DatabaseReference
 import io.appwrite.Client
@@ -56,15 +54,6 @@ class EditarGenero : AppCompatActivity() {
         nombre = findViewById(R.id.nombreGenero)
         nombre.setText(genero.nombre)
 
-        id_projecto = "674762dd002af7924291"
-        id_bucket = "674762fb002a63512c24"
-
-        val client = Client()
-            .setEndpoint("https://cloud.appwrite.io/v1")  // Your API Endpoint
-            .setProject(id_projecto)
-
-        val storage = Storage(client)
-
         var activity = this
 
         // Cargar lista de géneros desde la base de datos
@@ -86,31 +75,19 @@ class EditarGenero : AppCompatActivity() {
             } else {
                 val identificadorGenero = genero.id
 
-                GlobalScope.launch(Dispatchers.IO) {
-                    if (rutaImagen != null) {
+                 if (nombre.text.toString() != genero.nombre) {
+                      val generoActualizado = Genero(
+                          identificadorGenero,
+                          nombre.text.toString()
+                      )
 
-                        val identificadorFile = ID.unique()
+                      UtilGenero.escribirGenero(database, identificadorGenero!!, generoActualizado)
 
-                        // Actualizar los datos del género
-                        val generoActualizado = Genero(
-                            identificadorGenero,
-                            nombre.text.toString()
-                        )
+                      UtilGenero.tostadaCorrutina(
+                          activity, applicationContext,
+                          "Género actualizado con éxito"
+                      )
 
-                        UtilGenero.escribirGenero(database, identificadorGenero!!, generoActualizado)
-                    } else if (nombre.text.toString() != genero.nombre) {
-                        val generoActualizado = Genero(
-                            identificadorGenero,
-                            nombre.text.toString()
-                        )
-
-                        UtilGenero.escribirGenero(database, identificadorGenero!!, generoActualizado)
-
-                        UtilGenero.tostadaCorrutina(
-                            activity, applicationContext,
-                            "Género actualizado con éxito"
-                        )
-                    }
                 }
                 finish()
             }
@@ -118,13 +95,6 @@ class EditarGenero : AppCompatActivity() {
 
         botonVolver.setOnClickListener {
             finish()
-        }
-    }
-
-    private val accesoGaleria = registerForActivityResult(ActivityResultContracts.GetContent()) { uri: Uri? ->
-        if (uri != null) {
-            rutaImagen = uri
-            imagen.setImageURI(rutaImagen)
         }
     }
 }

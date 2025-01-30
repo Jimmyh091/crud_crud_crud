@@ -9,7 +9,7 @@
     tools:context=".genero.CrearGenero">
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/botonCrearGenero"
+        android:id="@+id/botonCrear"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="30dp"
@@ -38,7 +38,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="20dp"
         android:textColorHint="@color/white"
-        app:layout_constraintBottom_toTopOf="@+id/botonCrearGenero"
+        app:layout_constraintBottom_toTopOf="@+id/botonCrear"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
