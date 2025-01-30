@@ -10,6 +10,7 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.firabasecrud.R
+import com.example.firabasecrud.obras.Util
 import layout.Mensaje
 
 class MensajeAdaptador(private val lista_mensajes: List<Mensaje>, last_pos: Int) : RecyclerView.Adapter<MensajeAdaptador.MensajeViewHolder>() {
@@ -43,8 +44,8 @@ class MensajeAdaptador(private val lista_mensajes: List<Mensaje>, last_pos: Int)
             holder.imagen_yo.visibility=View.VISIBLE
             Glide.with(contexto)
                 .load(item_actual.imagen_emisor)
-                .apply(Utilidades.opcionesGlide(contexto))
-                .transition(Utilidades.transicion)
+                .apply(Util.opcionesGlide(contexto))
+                .transition(Util.transicion)
                 .into(holder.imagen_yo)
             holder.hora_yo.text=item_actual.fecha_hora
             holder.yo.text=item_actual.contenido
@@ -57,8 +58,8 @@ class MensajeAdaptador(private val lista_mensajes: List<Mensaje>, last_pos: Int)
             holder.imagen_otro.visibility=View.VISIBLE
             Glide.with(contexto)
                 .load(item_actual.imagen_emisor)
-                .apply(Utilidades.opcionesGlide(contexto))
-                .transition(Utilidades.transicion)
+                .apply(Util.opcionesGlide(contexto))
+                .transition(Util.transicion)
                 .into(holder.imagen_otro)
             holder.hora_otro.text=item_actual.fecha_hora
             holder.otro.text=item_actual.contenido

@@ -9,7 +9,9 @@ import android.widget.EditText
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.firabasecrud.MenuPrincipal
 import com.example.firabasecrud.R
+import com.google.firebase.database.ChildEventListener
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 
@@ -59,6 +61,7 @@ class VerMensaje : AppCompatActivity() {
                     id_mensaje,
                     "",
                     "",
+                    R.drawable.archivo_vacio,
                     mensaje,
                     fecha_hora
                 )
@@ -73,27 +76,11 @@ class VerMensaje : AppCompatActivity() {
             override fun onChildAdded(snapshot: DataSnapshot, previousChildName: String?) {
                 GlobalScope.launch(Dispatchers.IO) {
                     val pojo_mensaje = snapshot.getValue(Mensaje::class.java)
-                    pojo_mensaje!!.id_receptor = club_actual.id
+                    pojo_mensaje!!.id_receptor = usuario_actual
                     if(pojo_mensaje.id_receptor==pojo_mensaje.id_emisor){
-                        pojo_mensaje.imagen_emisor=club_actual.url_escudo
+                        pojo_mensaje.imagen_emisor=R.drawable.archivo_vacio // todo
                     }else{
-
-                        var semaforo = CountDownLatch(1)
-
-
-                        db_ref.child("liga").child("clubs").child(pojo_mensaje.id_emisor!!)
-                            .addListenerForSingleValueEvent(object : ValueEventListener {
-                                override fun onDataChange(snapshot: DataSnapshot) {
-                                    val club = snapshot.getValue(Club::class.java)
-                                    pojo_mensaje.imagen_emisor = club!!.url_escudo
-                                    semaforo.countDown()
-                                }
-
-                                override fun onCancelled(error: DatabaseError) {
-                                    println(error.message)
-                                }
-                            })
-                        semaforo.await()
+                        pojo_mensaje.imagen_emisor=R.drawable.archivo_vacio // todo
                     }
 
                     runOnUiThread {
@@ -139,9 +126,11 @@ class VerMensaje : AppCompatActivity() {
 
 
     }
+
     override fun onBackPressed() {
+        super.onBackPressed()
         finish()
-        val actividad = Intent(applicationContext,VerClubs::class.java)
+        val actividad = Intent(applicationContext,MenuPrincipal::class.java)
         last_pos = lista.size
         actividad.putExtra("LAST_POS", last_pos)
         Log.d("LASTTT_POS_ATRAS",last_pos.toString())
