@@ -1,6 +1,7 @@
 package com.example.firabasecrud.genero
 
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -48,6 +49,7 @@ class SeleccionarGeneros : AppCompatActivity(){
     private lateinit var lista: MutableList<Genero>
     private lateinit var db_ref: DatabaseReference
     private lateinit var adaptador: SeleccionarGeneroAdaptador
+    private lateinit var enviar : Button
 
     private lateinit var binding: ActivitySeleccionarGenerosBinding
 
@@ -67,6 +69,8 @@ class SeleccionarGeneros : AppCompatActivity(){
         recycler = binding.listaGeneros
         volver = binding.volverInicio
 
+        enviar = binding.enviar
+
         db_ref = FirebaseDatabase.getInstance().reference
         lista = mutableListOf()
 
@@ -77,7 +81,9 @@ class SeleccionarGeneros : AppCompatActivity(){
                     lista.clear()
                     snapshot.children.forEach { hijo: DataSnapshot? ->
                         val pojoGenero = hijo?.getValue(Genero::class.java)
+                        Log.v("Genero", "${ pojoGenero!!.nombre}")
                         lista.add(pojoGenero!!)
+                        Log.v("tamano", "${ lista.size}")
                     }
                     // Notificar que los datos han cambiado
                     recycler.adapter?.notifyDataSetChanged()
@@ -105,6 +111,11 @@ class SeleccionarGeneros : AppCompatActivity(){
 
         volver.setOnClickListener {
             finish()
+        }
+
+        enviar.setOnClickListener {
+            val generosSeleccionados = listaAux.filter { it.checked }
+            var
         }
     }
 
