@@ -48,6 +48,7 @@ class MenuPrincipal : AppCompatActivity() {
         botonVerGeneros = findViewById(R.id.vergeneros)
 
         enviarUsuario = findViewById(R.id.enviar)
+        enviarUsuario.setImageResource(R.drawable.baseline_send_24)
 
         chat = findViewById(R.id.chat)
 

@@ -42,11 +42,20 @@ class SeleccionarGeneroAdaptador(private val listaGenero: MutableList<Genero>) :
         Log.v("genero", "${generoActual.nombre}")
         holder.checkbox.text = generoActual.nombre
         Log.v("genero", "${ holder.checkbox.text}")
-        holder.checkbox.isChecked = false
+        holder.checkbox.isChecked = generoActual.checked
 
         holder.checkbox.setOnCheckedChangeListener { _, isChecked ->
             Log.v("genero", "a")
             holder.checkbox.isSelected = isChecked
+        }
+
+        holder.apply {
+            binding.itemGeneroCb.text = listaGenero[position].nombre
+            binding.itemGeneroCb.isChecked = listaGenero[position].checked
+            binding.itemGeneroCb.setOnCheckedChangeListener { _, isChecked ->
+                Log.v("genero", "a")
+                listaGenero[position].checked = isChecked
+            }
         }
     }
 

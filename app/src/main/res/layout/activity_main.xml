@@ -80,6 +80,7 @@
         android:textColorHint="@color/white"
         app:boxStrokeColor="@color/amarillo"
         app:boxBackgroundColor="@color/amarillo"
+        app:cursorColor="@color/amarillo"
         app:hintTextColor="@color/white"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/usuario">
@@ -90,7 +91,6 @@
             android:layout_height="wrap_content"
             android:background="@color/amarillo"
             android:textColorHighlight="@color/amarillo"
-            android:outlineSpotShadowColor="@color/amarillo"
             android:shadowColor="@color/amarillo"
             android:textColorHint="@color/white"
             android:textColor="@color/white"
@@ -114,6 +114,7 @@
         app:layout_constraintBottom_toBottomOf="@+id/til_nombreUs"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_margin="10dp"
+        android:visibility="visible"
         app:layout_constraintStart_toEndOf="@id/til_nombreUs"
         app:layout_constraintTop_toTopOf="@+id/til_nombreUs"
         tools:src="@drawable/baseline_send_24" />
