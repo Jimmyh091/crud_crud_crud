@@ -35,10 +35,6 @@ class EditarGenero : AppCompatActivity() {
     private lateinit var genero: Genero
     private lateinit var listaGeneros: MutableList<Genero>
 
-    //AppWriteStorage
-    private lateinit var id_projecto: String
-    private lateinit var id_bucket: String
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()

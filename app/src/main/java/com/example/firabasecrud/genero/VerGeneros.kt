@@ -69,25 +69,11 @@ class VerGeneros : AppCompatActivity() {
 
         var listaAux = listOf<Genero>()
         nombre.doOnTextChanged { text, start, before, count ->
-            if (rating.isChecked) {
-                listaAux = lista.filter { filtrar(it) }.sortedByDescending { it.nombre }
-            } else {
-                listaAux = lista.filter { filtrar(it) }
-            }
+
+            listaAux = lista.filter { filtrar(it) }
 
             adaptador = GeneroAdaptador(listaAux.toMutableList())
             recycler.adapter = adaptador
-        }
-
-        rating.setOnCheckedChangeListener { _, isChecked ->
-            if (isChecked) {
-                listaAux = lista.filter { filtrar(it) }.sortedBy { it.nombre }
-                adaptador = GeneroAdaptador(listaAux.reversed().toMutableList())
-                recycler.adapter = adaptador
-            } else {
-                adaptador = GeneroAdaptador(lista.toMutableList())
-                recycler.adapter = adaptador
-            }
         }
 
         adaptador = GeneroAdaptador(lista)
@@ -103,5 +89,4 @@ class VerGeneros : AppCompatActivity() {
     fun filtrar(genero: Genero): Boolean {
         return genero.nombre!!.contains(nombre.text.toString())
     }
-}
 }

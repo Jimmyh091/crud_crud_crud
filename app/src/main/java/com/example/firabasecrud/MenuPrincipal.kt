@@ -13,6 +13,7 @@ import androidx.core.view.WindowInsetsCompat
 import com.example.firabasecrud.chat.VerChat
 import com.example.firabasecrud.genero.CrearGenero
 import com.example.firabasecrud.genero.EditarGenero
+import com.example.firabasecrud.genero.VerGeneros
 import com.example.firabasecrud.obras.CrearObra
 import com.example.firabasecrud.obras.VerObras
 import com.google.android.material.textfield.TextInputEditText
@@ -22,7 +23,7 @@ class MenuPrincipal : AppCompatActivity() {
     private lateinit var botonCrear: Button
     private lateinit var botonLista: Button
     private lateinit var botonCrearGenero: Button
-    private lateinit var botonEditarGenero: Button
+    private lateinit var botonVerGeneros: Button
     private lateinit var chat : ImageView
     private lateinit var enviarUsuario : ImageView
 
@@ -42,7 +43,7 @@ class MenuPrincipal : AppCompatActivity() {
         botonLista = findViewById(R.id.listaObras)
 
         botonCrearGenero = findViewById(R.id.creargenero)
-        botonEditarGenero = findViewById(R.id.button2)
+        botonVerGeneros = findViewById(R.id.vergeneros)
 
         enviarUsuario = findViewById(R.id.enviar)
 
@@ -89,8 +90,8 @@ class MenuPrincipal : AppCompatActivity() {
             startActivity(intent)
         }
 
-        botonEditarGenero.setOnClickListener {
-            val intent = Intent(this, EditarGenero::class.java)
+        botonVerGeneros.setOnClickListener {
+            val intent = Intent(this, VerGeneros::class.java)
             startActivity(intent)
         }
     }

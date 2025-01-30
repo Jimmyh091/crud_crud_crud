@@ -83,13 +83,6 @@ class CrearGenero : AppCompatActivity() {
                 val identificadorGenero = database.child("arte").child("generos").push().key
 
                 GlobalScope.launch(Dispatchers.IO) {
-                    var mimeType = ""
-                    var nombreArchivo = ""
-
-                    val identificadorFile = ID.unique()
-
-                    var linkImagen =
-                        "https://cloud.appwrite.io/v1/storage/buckets/$id_bucket/files/$identificadorFile/preview?project=$id_projecto"
 
                     val genero = Genero(
                         identificadorGenero,
